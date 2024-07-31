@@ -7,6 +7,7 @@ import {
 import { Options as PluginContentBlogOptions } from '@docusaurus/plugin-content-blog';
 import { Options as PluginGoogleAnalyticsOptions } from '@docusaurus/plugin-google-analytics';
 import { Options as SEOChecksPluginOptions } from '@wasmcloud/docusaurus-seo-checks';
+import { Options as DecapCMSPluginOptions } from '@wasmcloud/docusaurus-cms-decap';
 import rehypeShiki, { RehypeShikiOptions } from '@shikijs/rehype';
 import { bundledLanguages } from 'shiki';
 import {
@@ -155,6 +156,13 @@ const config = (async (): Promise<Config> => {
         } as PluginGoogleAnalyticsOptions,
       ],
       customPostCssPlugin, // PostCSS plugin function registration
+      [
+        '@wasmcloud/docusaurus-cms-decap',
+        {
+          configYamlPath: './decap.config.yaml',
+          adminPath: '/admin',
+        } as DecapCMSPluginOptions,
+      ],
     ],
 
     themeConfig: {
